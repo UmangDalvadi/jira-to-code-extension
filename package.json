@@ -10,7 +10,10 @@
         "Other"
     ],
     "main": "./out/extension.js",
-    "activationEvents": [],
+   	"activationEvents": [
+  		"onCommand:jira-to-code.ai"
+	],
+
     "contributes": {
         "commands": [
             {
