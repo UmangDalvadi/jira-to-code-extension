@@ -1,5 +1,6 @@
 # Jira‑to‑Code VS Code Extension
 
+<!-- Status badges for enhanced project visibility -->
 [![Version](https://img.shields.io/npm/v/jira-to-code.svg)](https://www.npmjs.com/package/jira-to-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![VS Code](https://img.shields.io/badge/VSCode-Extension-blue)](https://code.visualstudio.com/)
