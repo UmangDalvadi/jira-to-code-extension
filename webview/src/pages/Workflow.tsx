@@ -10,7 +10,11 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { postMessage } from "../lib/vscodeBridge";
-import { FromWebview } from "../../../src/constants/messageTypes";
+
+// Define message types locally for development
+enum FromWebview {
+    SendJiraUrl = "sendJiraUrl",
+}
 
 const Workflow = () => {
     const [jiraUrl, setJiraUrl] = useState("");
