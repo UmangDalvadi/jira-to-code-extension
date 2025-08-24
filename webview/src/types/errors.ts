@@ -1,29 +1,58 @@
 // Error types for the application
+
+export enum ErrorCodes {
+    // Authentication & Authorization
+    AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR',
+    TOKEN_EXPIRED = 'TOKEN_EXPIRED',
+    PERMISSION_DENIED = 'PERMISSION_DENIED',
+    
+    // Validation
+    VALIDATION_ERROR = 'VALIDATION_ERROR',
+    INVALID_URL = 'INVALID_URL',
+    
+    // Network & API
+    NETWORK_ERROR = 'NETWORK_ERROR',
+    TIMEOUT_ERROR = 'TIMEOUT_ERROR',
+    RATE_LIMIT_ERROR = 'RATE_LIMIT_ERROR',
+    JIRA_API_ERROR = 'JIRA_API_ERROR',
+    
+    // Generic
+    UNKNOWN_ERROR = 'UNKNOWN_ERROR'
+}
+
+export enum ErrorSeverity {
+    LOW = 'LOW',
+    MEDIUM = 'MEDIUM', 
+    HIGH = 'HIGH',
+    CRITICAL = 'CRITICAL'
+}
+
 export interface AppError {
-    code: string;
+    code: ErrorCodes;
     message: string;
+    severity?: ErrorSeverity;
+    context?: string;
     details?: any;
     retryable?: boolean;
     timestamp?: Date;
 }
 
-export enum ErrorCodes {
-    NETWORK_ERROR = 'NETWORK_ERROR',
-    AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR',
-    VALIDATION_ERROR = 'VALIDATION_ERROR',
-    JIRA_API_ERROR = 'JIRA_API_ERROR',
-    TIMEOUT_ERROR = 'TIMEOUT_ERROR',
-    RATE_LIMIT_ERROR = 'RATE_LIMIT_ERROR',
-    UNKNOWN_ERROR = 'UNKNOWN_ERROR',
-    INVALID_URL = 'INVALID_URL',
-    TOKEN_EXPIRED = 'TOKEN_EXPIRED',
-    PERMISSION_DENIED = 'PERMISSION_DENIED'
+// Utility types for error handling
+export interface ErrorToastConfig {
+    type: 'error' | 'warning' | 'info';
+    title: string;
+    message: string;
+    actions?: Array<{
+        label: string;
+        action: () => void;
+    }>;
 }
 
 export interface RetryConfig {
-    maxRetries: number;
-    delayMs: number;
-    backoffMultiplier?: number;
+    maxAttempts: number;
+    baseDelay: number;
+    maxDelay?: number;
+    backoffFactor?: number;
 }
 
 export interface NotificationOptions {
